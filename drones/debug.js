@@ -1,4 +1,5 @@
 var chalk = require('chalk');
+var spawn = require('cross-spawn');
 module.exports = function(argv) {
 	return function() {
 		if (argv._[1]) {
@@ -8,6 +9,9 @@ module.exports = function(argv) {
 				justResolve: true
 			});
 			console.log(chalk.magenta('Package found in '), chalk.gray(packageFullpath));
+			output = spawn.sync("node", [packageFullpath], {
+		      stdio: [process.stdin, process.stdout, "inherit"]
+		    });
 			return true;
 		} else {
 			return this.run('message', {

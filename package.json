@@ -1,6 +1,6 @@
 {
   "name": "dron-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Fast and furious task manager",
   "main": "lib/Cli.js",
   "scripts": {
@@ -15,8 +15,8 @@
     "chalk": "^1.1.3",
     "colors": "^1.1.2",
     "ejs": "^2.5.2",
+    "inquirer": "^1.1.3",
     "minimist": "^1.2.0",
-    "prompt": "^1.0.0",
     "requireg": "^0.1.6",
     "spawn-sync": "^1.0.15"
   }
