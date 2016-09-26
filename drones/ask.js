@@ -1,4 +1,8 @@
-  var prompt = require('prompt');
+var prompt = require('prompt');
+prompt.message = '';
+prompt.delimiter = '';
+prompt.colors = false;
+
 module.exports = function(config) {
 	return function() {
 		return new Promise(function(resolve, reject) {

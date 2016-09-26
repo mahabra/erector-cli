@@ -1,13 +1,24 @@
 #! /usr/bin/env node
 // -*- js -*-
 "use strict";
-var npmPackageExpr = /^[a-z0-9\-_]+$/i;
-var Cli = require('./lib/Cli.js');
-var cli = new Cli(process);
-var andron;
-for (var i=2;i<process.argv.length;++i) {
 
-	var packageName = npmPackageExpr.exec(process.argv[i]) ? 'dron-'+process.argv[i] : process.argv[i];
-	console.log('Dron will execute'.blue,packageName.blue.bold);
-	cli.usePackage(packageName);
-}
+var Cli = require('./lib/Cli.js');
+var chalk = require('chalk');
+var npmPackageExpr = require('./lib/exprs.js').npmPackageExpr;
+var argv = require('minimist')(process.argv.slice(2));
+var cli = new Cli(process, argv);
+console.log(chalk.blue('Executes'),chalk.blue.bold(process.argv[2]), chalk.blue('dron'));
+cli.usePackage(process.argv[2], argv)
+.then(function(result) {
+	console.log(result ? chalk.green('Mission complete') : chalk.red('Mission aborted', result));
+})
+.catch(function(e) {
+	if (argv['show-errors']) {
+		console.log(chalk.red('Package '+process.argv[2]+' has an errors'), e);
+		throw e;
+	} else {
+		console.log(chalk.red('Package '+process.argv[2]+' has an errors. Run `dron debug '+process.argv[2]+'` to find a problem.'));
+	}
+});
+
+
