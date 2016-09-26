@@ -11,7 +11,12 @@ module.exports = function(config) {
 			      message: config.question + '(yes/no)',
 			      required: true
 			    }], function (err, result) {
-			    	resolve(result.confirmation.toLowerCase()==='yes');
+			    	if (err) {
+			    		resolve(false);
+			    	} else {
+			    		resolve(result.confirmation.toLowerCase()==='yes');
+			    	}
+			    	
 			});
 		});
 		
