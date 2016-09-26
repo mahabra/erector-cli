@@ -1,0 +1,19 @@
+{
+  "name": "dron-cli",
+  "version": "0.0.1",
+  "description": "Fast and furious task manager",
+  "main": "lib/Cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
+  "license": "MIT",
+  "bin": {
+    "dron": "index.js"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "prompt": "^1.0.0",
+    "requireg": "^0.1.6"
+  }
+}
