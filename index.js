@@ -2,7 +2,7 @@
 // -*- js -*-
 "use strict";
 
-var Dron = require('./../dron/Dron');
+var Dron = require('dron/Dron');
 var chalk = require('chalk');
 var argv = require('minimist')(process.argv.slice(2));
 var cli = new Dron(process, argv);
@@ -19,5 +19,3 @@ cli.usePackage(process.argv[2], argv)
 		console.log(chalk.red('Package '+process.argv[2]+' has an errors. Run `dron debug '+process.argv[2]+'` to find a problem.'));
 	}
 });
-
-
