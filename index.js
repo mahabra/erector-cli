@@ -2,11 +2,10 @@
 // -*- js -*-
 "use strict";
 
-var Cli = require('./lib/Cli.js');
+var Dron = require('./../dron/Dron');
 var chalk = require('chalk');
-var npmPackageExpr = require('./lib/exprs.js').npmPackageExpr;
 var argv = require('minimist')(process.argv.slice(2));
-var cli = new Cli(process, argv);
+var cli = new Dron(process, argv);
 console.log(chalk.blue('Executes'),chalk.blue.bold(process.argv[2]), chalk.blue('dron'));
 cli.usePackage(process.argv[2], argv)
 .then(function(result) {

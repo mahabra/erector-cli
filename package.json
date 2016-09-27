@@ -1,7 +1,7 @@
 {
   "name": "dron-cli",
   "version": "0.0.3",
-  "description": "Fast and furious task manager",
+  "description": "Fast, furious & minimalist command line tool, which does a routine for you",
   "main": "lib/Cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
