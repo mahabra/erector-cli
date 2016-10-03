@@ -2,7 +2,7 @@
 // -*- js -*-
 "use strict";
 
-var Dron = require('dron/Dron');
+var Dron = require('./../dron/Dron');//require('dron/Dron');
 var chalk = require('chalk');
 var argv = require('minimist')(process.argv.slice(2));
 var cli = new Dron(process, argv);

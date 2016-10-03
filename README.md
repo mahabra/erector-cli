@@ -1,4 +1,4 @@
-Fast and furious task manager
+Client for dron
 --
 
 # Install
