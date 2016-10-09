@@ -1,6 +1,6 @@
 {
   "name": "dron-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fast, furious & minimalist command line tool, which does a routine for you",
   "main": "lib/Cli.js",
   "scripts": {
