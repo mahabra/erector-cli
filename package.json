@@ -1,13 +1,13 @@
 {
   "name": "dron-cli",
   "version": "0.1.1",
-  "description": "Fast, furious & minimalist command line tool, which does a routine for you",
+  "description": "Dron CLI",
   "main": "lib/Cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
-  "license": "MIT",
+  "license": "BSD-2-clause",
   "bin": {
     "dron": "index.js"
   },
