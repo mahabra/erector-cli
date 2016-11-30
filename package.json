@@ -12,6 +12,7 @@
     "dron": "index.js"
   },
   "dependencies": {
+    "chalk": "^1.1.3",
     "minimist": "^1.1.3"
   }
 }
