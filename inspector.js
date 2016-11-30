@@ -17,8 +17,23 @@ const commonProblems = [
       return chalk.yellow('! ')+chalk.gray("It seems you have forgotten to import dron operator "+chalk.inverse(signature)+". ")+
       "\n\n"+chalk.bold.yellow('Hint')+'\n'+
       "Paste the import instruction to the beginning of the file "+chalk.yellow("("+badFile+")" ? badFile[2] : "No file")+":\n\n"+
-      chalk.bgWhite.black(' 1 ')+' '+hightlightJs('import { assignReducer } from "dron";')+
+      chalk.bgWhite.black(' 1 ')+' '+hightlightJs('import { '+signature+' } from "dron";')+
       "\n";
+    }
+  },
+  {
+    detection: function(message, stack) {
+      const expr = /^You must provide a `([a-z0-9]+)` parameter$/i;
+      if (expr.test(message)&&~stack.indexOf('inquirer')) {
+        return expr.exec(message)[1];
+      }
+    },
+    conclusion: function(signature) {
+      return chalk.yellow('! ')+
+      chalk.gray("It seems you have forgotten to define "+signature+" of dialog question.")+
+      "\n\n"+chalk.bold.yellow('Hint')+'\n'+
+      "Unfortunately, there is no way to find out the problematic file. Try to search manually in your files "+
+      chalk.inverse('dialog(...)')+" oparator with missed key "+chalk.inverse('message');
     }
   }
 ]
@@ -43,6 +58,6 @@ module.exports = function(message, stack) {
   if (solutions.length>0) {
     return solutions[0];
   } else {
-    return 'Unknown error';
+    return false;
   }
 }

@@ -28,9 +28,9 @@ function localFileExists(filename) {
 let runner;
 const filename = path.resolve(process.cwd(), process.argv[2]);
 if (localFileExists(filename)) {
-  runner = dron.runModule(filename, args);
+  runner = dron.runModule(filename, args, process.env);
 } else {
-  runner = dron.runPackage(process.argv[2], args);
+  runner = dron.runPackage(process.argv[2], args, process.env);
 }
 
 runner
