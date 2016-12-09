@@ -1,7 +1,7 @@
 {
-  "name": "dron-cli",
+  "name": "erector-cli",
   "version": "1.0.0a",
-  "description": "Dron command line interface",
+  "description": "Erector command line interface",
   "main": "lib/Cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

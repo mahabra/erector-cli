@@ -10,7 +10,7 @@ function hightlightJs(code) {
 
 const commonProblems = [
   {
-    detection: /^(assignReducer|assignState|confirm|dialog|dispatch|echo|exit|fileExists|map|readFile|readJson|run|spawn|transform|writeFile|writeFileSafe||writeJson) is not defined$/,
+    detection: /^(assignReducer|assignState|confirm|dialog|dispatch|echo|exit|fileExists|map|readFile|readJson|run|spawn|transform|writeFile|writeFileSafe|writeJson|ejs|fromModule) is not defined$/,
     conclusion: function(signature, stack) {
       let badFileExpr = /at ([a-z0-9\.\$_\(\)\[\] ]*) \(([\/\\\-[a-z0-9\.\$_ ]+):[0-9]+:[0-9]+\)/i;
       let badFile = badFileExpr.exec(stack);
