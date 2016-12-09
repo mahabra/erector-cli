@@ -30,6 +30,7 @@ const filename = path.resolve(process.cwd(), process.argv[2]);
 if (localFileExists(filename)) {
   runner = dron.runModule(filename, args, process.env);
 } else {
+  console.log(process.argv);
   runner = dron.runPackage(process.argv[2], args, process.env);
 }
 
