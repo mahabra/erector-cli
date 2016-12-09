@@ -1,12 +1,12 @@
-Command line interface for Dron
+Command line interface for Erector
 --
 
 # Install
 ```
-npm install dron-cli -g
+npm install erector-cli -g
 ```
 
-More information on [https://github.com/morulus/dron](https://github.com/morulus/dron)
+More information on [https://github.com/morulus/erector](https://github.com/morulus/erector)
 
 # License
 BSD-2-clause © Vladimir Kalmykov

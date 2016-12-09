@@ -1,6 +1,6 @@
 {
   "name": "erector-cli",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Erector command line interface",
   "main": "lib/Cli.js",
   "scripts": {
