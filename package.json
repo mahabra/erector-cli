@@ -9,7 +9,6 @@
   "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
   "license": "BSD-2-clause",
   "bin": {
-    "dron": "index.js",
     "erect": "index.js"
   },
   "dependencies": {
