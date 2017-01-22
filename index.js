@@ -32,10 +32,10 @@ let result;
 if (localFileExists(filename)) {
   result = app.run(filename, args);
 } else {
-  if (process.argv[2].substr(0,8) === 'erector-') {
+  if (!/[\.]/.test(process.argv[2])) {
     result = app.runPackage(process.argv[2], args);
   } else {
-    result = Promise.reject(new Error('Module "'+process.argv[2]+'" not found'));
+    result = Promise.reject(new Error('Module "'+filename+'" not found'));
   }
 }
 
