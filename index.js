@@ -3,7 +3,7 @@
 "use strict";
 const fs = require('fs');
 const path = require('path');
-const dron = require(process.env.DEV?"./../erector/index.js":"erector");
+const erector = require(process.env.DEV ? "./../erector/erector.js" : "erector");
 const args = require('minimist')(process.argv.slice(2));
 const chalk = require('chalk');
 const inspector = require('./inspector');
@@ -25,18 +25,21 @@ function localFileExists(filename) {
   }
 }
 
-let runner;
+const app = erector();
+app.use(erector.pwd(process.env.PWD || process.cwd()));
 const filename = path.resolve(process.cwd(), process.argv[2]);
+let result;
 if (localFileExists(filename)) {
-  runner = dron.runModule(filename, args, process.env);
+  result = app.run(filename, args);
 } else {
-  runner = dron.runPackage(process.argv[2], args, process.env);
+  if (process.argv[2].substr(0,8) === 'erector-') {
+    result = app.runPackage(process.argv[2], args);
+  } else {
+    result = Promise.reject(new Error('Module "'+process.argv[2]+'" not found'));
+  }
 }
 
-runner
-.then(function(result) {
-  console.log('Completed');
-})
+result
 .catch(function(e) {
   echoError(e.message, e.stack);
 });
