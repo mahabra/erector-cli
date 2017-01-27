@@ -12,8 +12,9 @@
     "erect": "index.js"
   },
   "dependencies": {
-    "erector": "^1.0.0-beta1",
     "chalk": "^1.1.3",
+    "erector": "^1.0.0-beta.0",
+    "find-parent-dir": "^0.3.0",
     "minimist": "^1.1.3"
   }
 }
