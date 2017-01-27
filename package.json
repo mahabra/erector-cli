@@ -1,6 +1,6 @@
 {
   "name": "erector-cli",
-  "version": "0.2.0-beta.0",
+  "version": "0.2.0-beta.1",
   "description": "Erector command line interface",
   "main": "lib/Cli.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "chalk": "^1.1.3",
-    "erector": "^1.0.0-beta.0",
+    "erector": "^1.0.0-beta.1",
     "find-parent-dir": "^0.3.0",
     "minimist": "^1.1.3"
   }
