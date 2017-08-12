@@ -8,6 +8,8 @@ const args = require('minimist')(process.argv.slice(2));
 const chalk = require('chalk');
 const resolvePackage = require('erector-node-utils/resolvePackage');
 const isFileSync = require('erector-node-utils/isFileSync');
+const sideeffects = require('./lib/sideeffects.js');
+const middlewares = require('./lib/middlewares.js');
 const executeSystemCommand = require('./lib/helpers/executeSystemCommand.js');
 const searchInLocalErector = require('./lib/searchInLocalErector.js');
 const inspector = require('./inspector');
@@ -25,6 +27,8 @@ function echoError(e) {
 
 const app = erector();
 app.use(erector.pwd(process.env.PWD || process.cwd()));
+app.use(erector.sideeffect(sideeffects))
+app.use(erector.middleware(middlewares))
 Promise.resolve(process.argv[2])
 .then(executeSystemCommand)
 .catch(function(payload) {
