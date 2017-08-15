@@ -11,7 +11,7 @@ const isFileSync = require('erector-node-utils/isFileSync');
 const sideeffects = require('./lib/sideeffects.js');
 const middlewares = require('./lib/middlewares.js');
 const executeSystemCommand = require('./lib/helpers/executeSystemCommand.js');
-const searchInLocalErector = require('./lib/searchInLocalErector.js');
+const resolveModuleLocation = require('../erector-node-utils/resolveModuleLocation.js');
 const inspector = require('./inspector');
 
 function echoError(e) {
@@ -35,28 +35,12 @@ Promise.resolve(process.argv[2])
   if (payload instanceof Error) {
     throw payload;
   }
-  const resourceName = path.resolve(process.cwd(), payload);
-  let result;
-
-  if (isFileSync(resourceName)) {
-    result = app.run(resourceName, args);
-  } else {
-    if (!/[\.]/.test(process.argv[2])) {
-      // e.type === erector.constants.ERR_UNDEFINED_PACKAGE
-      result = resolvePackage(process.argv[2], {
-        before: function(shortName) {
-          return searchInLocalErector(process.cwd(), shortName)
-        }
-      }).then(function(filename) {
-        return app.run(filename, args, {
-          autoinstall: false
-        });
-      });
-    } else {
-      result = Promise.reject(new Error('Module "'+filename+'" not found'));
-    }
-  }
-  return result;
+  return resolveModuleLocation(payload, process.cwd())
+  .then(function(filename) {
+    return app.run(filename, args, {
+      autoinstall: false
+    });
+  });
 })
 .catch(function(e) {
   echoError(e);
