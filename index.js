@@ -11,6 +11,7 @@ const isFileSync = require('erector-node-utils/isFileSync');
 const sideeffects = require('./lib/sideeffects.js');
 const middlewares = require('./lib/middlewares.js');
 const executeSystemCommand = require('./lib/helpers/executeSystemCommand.js');
+const cutArgsCommands = require('./lib/helpers/cutArgsCommands.js');
 const resolveModuleLocation = require('../erector-node-utils/resolveModuleLocation.js');
 const inspector = require('./inspector');
 
@@ -35,9 +36,11 @@ Promise.resolve(process.argv[2])
   if (payload instanceof Error) {
     throw payload;
   }
-  return resolveModuleLocation(payload, process.cwd())
+  return resolveModuleLocation(payload, process.cwd(), {
+    paths: [path.resolve(__dirname, '../erector-base-scripts')],
+  })
   .then(function(filename) {
-    return app.run(filename, args, {
+    return app.run(filename, cutArgsCommands(args), {
       autoinstall: false
     });
   });
