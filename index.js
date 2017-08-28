@@ -29,14 +29,14 @@ function echoError(e) {
 const app = erector();
 app.use(erector.pwd(process.env.PWD || process.cwd()));
 app.use(erector.sideeffect(sideeffects))
-app.use(erector.middleware(middlewares))
-Promise.resolve(process.argv[2])
+app.use(erector.middleware(middlewares));
+Promise.resolve([args._[0], args])
 .then(executeSystemCommand)
 .catch(function(payload) {
   if (payload instanceof Error) {
     throw payload;
   }
-  return resolveModuleLocation(payload, process.cwd(), {
+  return resolveModuleLocation(payload[0], process.cwd(), {
     paths: [path.resolve(__dirname, '../erector-base-scripts')],
   })
   .then(function(filename) {
